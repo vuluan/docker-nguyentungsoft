@@ -1,0 +1,3 @@
+[submodule "web/cibest"]
+	path = web/cibest
+	url = ssh://git@bitbucket.shopmacher.de/ps/base-javascript.git

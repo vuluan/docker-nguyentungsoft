@@ -1,0 +1,28 @@
+version: '3'
+services:
+    mysql:
+        container_name: mysql
+        build:
+            context: mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=admin
+        command: mysqld --sql-mode=""
+        ports:
+            - "3306:3306"
+        volumes:
+            - "./mysql/entrypoint-scripts-local/:/docker-entrypoint-initdb.d/"
+    web:
+        container_name: web
+        build:
+            context: web
+        ports:
+            - "80:80"
+        volumes:
+            - "./web/base-symfony:/var/www/html/base-symfony"
+            - "./web/config_local/base-symfony.conf:/etc/apache2/sites-enabled/base-symfony.conf"
+        entrypoint:
+            - /docker-entrypoint.sh
+        links:
+            - mysql:mtmg-db
+        depends_on:
+            - mysql
