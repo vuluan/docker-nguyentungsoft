@@ -1,4 +1,4 @@
-FROM tutum/apache-php
+FROM nimmis/apache-php7
 
 RUN apt-get update && apt-get install nano
 
