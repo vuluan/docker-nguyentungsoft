@@ -16,7 +16,7 @@ services:
         build:
             context: web
         ports:
-            - "8888:80"
+            - "80:80"
         volumes:
             - "./web/base-symfony:/var/www/html/base-symfony"
             - "./web/config_local/base-symfony.conf:/etc/apache2/sites-enabled/base-symfony.conf"
